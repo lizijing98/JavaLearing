@@ -1,3 +1,5 @@
+package base;
+
 /**
  * 数据类型
  *

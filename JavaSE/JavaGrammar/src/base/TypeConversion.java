@@ -1,3 +1,5 @@
+package base;
+
 /**
  * 类型转换
  *
