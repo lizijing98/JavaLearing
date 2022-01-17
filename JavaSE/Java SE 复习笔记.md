@@ -67,10 +67,6 @@ Java 数据类型分为两大类：
 
     - byte：占用 1 个字节，可表示范围：-128 ~ 127
 
-      <img src="img/image-20220115175820043.png" alt="image-20220115175820043" style="zoom:50%;" />
-
-      <!--数据范围越界导致报错-->
-
     - short：占用 2 个字节，可表示范围：-32768 ~ 32767
 
     - int：占用 4 个字节，可表示范围：-2147483648 ~ 2147483647
@@ -80,10 +76,10 @@ Java 数据类型分为两大类：
   - 浮点类型
 
     - float：占用 4 个字节
-    - double：占用 8 个字节
-
-  - 字符类型
-
+  - double：占用 8 个字节
+  
+- 字符类型
+  
     - char：占用 2 个字节
 
 - 布尔类型
@@ -326,4 +322,128 @@ Scanner scanner = new Scanner(System.in);
       for(;i<10;i++){};
       ```
 
-- 
+- 增强 for 循环
+
+  - ```java
+    int[] nums = {1,2,3,4,5};
+    for(int x:nums){
+        //循环体
+    };
+    ```
+
+  - 主要用于数组和集合
+
+  - idea for 循环快捷键：i.for
+
+- break 中断
+
+  - 强制跳出循环，不执行后续循环
+
+- continue
+
+  - 终止循环的某次过程，跳过该次继续接下来的循环
+
+- label
+
+  - break/continue + label：结束循环/该次循环，跳至 label 处
+
+## 4. 方法（函数）
+
+### 4.1 设计方法的原则
+
+方法的本质是功能块，尽可能保证方法的**原子性**
+
+### 4.2 方法的定义
+
+```java
+修饰符 返回值类型 方法名(参数类型 参数名){
+    方法体;
+    return 返回值;
+}
+```
+
+### 4.3 方法的调用
+
+```
+对象名.方法名
+```
+
+**Java 都是值传递，没有引用传递**
+
+### 4.4 方法的重载
+
+重载：在一个类中，有相同的函数名称，但形参不同的函数
+
+**重载规则：**
+
+1. 方法名称必须相同
+2. 参数列表必须不同：**个数不同、类型不同、参数排列顺序不同**
+3. 方法的返回值类型可以相同也可以不同
+4. 仅仅返回值类型不同不构成方法的重载
+
+**实现理论：**
+
+方法名称相同时，编译器根据调用方法的参数个数、参数类型等逐个进行匹配，选择对应的方法，若匹配失败则编译报错。
+
+### 4.5 命令行传参
+
+```java
+package method;
+
+/**
+ * 命令行传参
+ *
+ * @author LiZijing
+ * @date 2022/1/17
+ */
+public class commandLine {
+  public static void main(String[] args) {
+    for (String arg : args) {
+      System.out.println(arg);
+    }
+  }
+}
+
+```
+
+![image-20220117220009517](img/image-20220117220009517.png)
+
+注意执行路径和执行方法
+
+### 4.6 可变参数
+
+在 JDK1.5 开始，Java 支持传递同类型的可变参数
+
+在方法声明中，**在指定参数类型后面加一个省略号 (...) 即可**
+
+一个方法中只能指定一个可变参数，它必须是方法的最后一个参数，任一普通参数必须在其之前声明
+
+**本质是一个数组**
+
+```Java
+package method;
+
+/**
+ * 可变参数
+ *
+ * @author LiZijing
+ * @date 2022/1/17
+ */
+public class VariableParam {
+  public static void main(String[] args) {
+    VariableParam variableParam = new VariableParam();
+    variableParam.varParams(1, 2, 3);
+    variableParam.varParams(new int[] {4, 5, 6});
+  }
+
+  public void varParams(int... nums) { //本质是一个数组
+    for (int num : nums) {
+      System.out.println(num);
+    }
+  }
+}
+```
+
+### 4.7 递归
+
+自身调用，具体看算法分析，此处不详讲
